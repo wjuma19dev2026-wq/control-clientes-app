@@ -1,7 +1,17 @@
 <app-header />
 <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
   <div class="container">
-    <router-outlet></router-outlet>
+    <div class="az-content-body">
+      <app-jumbotron />
+
+          <div class="row">
+            <div class="col-12">
+
+              <app-breadcrumb />
+            </div>
+          </div>
+          <router-outlet />
+    </div>
   </div>
 </div>
 
