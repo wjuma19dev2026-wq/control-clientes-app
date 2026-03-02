@@ -1,0 +1,24 @@
+<div class="table-responsive">
+  <table class="table mg-b-0 table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Salario</th>
+        <!-- <th>Acciones</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      @for (cliente of clientes(); track cliente.id) {
+        <tr>
+          <th scope="row">{{ cliente.id }}</th>
+          <td>{{ cliente.nombre }} {{ cliente.apellido }}</td>
+          <td>{{ cliente.salario }}</td>
+          <td>
+            <button class="btn btn-warning btn-icon"><i class="typcn typcn-edit"></i></button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

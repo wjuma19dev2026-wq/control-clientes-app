@@ -1,0 +1,58 @@
+<form #agregarClienteForm="ngForm" (ngSubmit)="agregarCliente(agregarClienteForm)">
+  <fieldset>
+    <legend class="az-content-label">Nuevo cliente</legend>
+
+    <div class="mb-3">
+      <label for="nombre">Nombre</label>
+      <input
+        ngModel
+        type="text"
+        name="nombre"
+        class="form-control"
+        id="nombre"
+        placeholder="Nombre del cliente"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="apellido">Apellido</label>
+      <input
+        ngModel
+        type="text"
+        name="apellido"
+        class="form-control"
+        id="apellido"
+        placeholder="Apellido del cliente"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        ngModel
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="Email del cliente"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="saldo">Saldo</label>
+      <input
+        ngModel
+        type="number"
+        name="saldo"
+        class="form-control"
+        id="saldo"
+        placeholder="Saldo del cliente"
+      />
+    </div>
+
+    <div class="mb-3 d-flex gap-2">
+      <button type="submit" class="btn btn-primary btn-with-icon">
+        <i class="typcn typcn-document-add"></i>
+        Agregar cliente
+      </button>
+      <button (click)="cancelar()" type="button" class="btn btn-outline-primary">Cancelar</button>
+    </div>
+  </fieldset>
+</form>

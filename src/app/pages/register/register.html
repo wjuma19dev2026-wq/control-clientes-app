@@ -1,0 +1,88 @@
+<div class="az-signup-header">
+  <h2>Vamos!</h2>
+  <h4>Es gratis, crear una cuenta solo te llevara unos minutos.</h4>
+
+  <!-- needs-validation
+  was-validated -->
+  <form #registerForm="ngForm" class="" (ngSubmit)="onSubmit(registerForm)">
+    @if (error) {
+      <div>
+        <div class="alert" [ngClass]="{ 'alert-danger': error.status === 400 }" role="alert">
+          <strong>Opss!</strong> {{ error.error.error }}
+        </div>
+      </div>
+    }
+    <div class="form-group">
+      <label>Nombre</label>
+      <input
+        ngModel
+        #nombre="ngModel"
+        name="nombre"
+        type="text"
+        class="form-control"
+        placeholder="Ingresa tu nombre"
+        required
+      />
+    </div>
+    <div class="form-group has-validation">
+      <label>Apellido</label>
+      <input
+        ngModel
+        #apellido="ngModel"
+        name="apellido"
+        type="text"
+        class="form-control"
+        placeholder="Tu apellido"
+        requiredj
+      />
+      <div class="invalid-feedback">El apellido es obligatorio</div>
+    </div>
+    <div class="form-group">
+      <label>Correo</label>
+      <input
+        ngModel
+        #email="ngModel"
+        name="email"
+        type="text"
+        class="form-control"
+        placeholder="Ingresa tu correo electronico"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Contrasena</label>
+      <input
+        ngModel
+        #password="ngModel"
+        name="password"
+        type="password"
+        class="form-control"
+        placeholder="Ingresa tu contrasena"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Confirmar Contrasena</label>
+      <input
+        ngModel
+        #confirmPassword="ngModel"
+        name="confirmPassword"
+        type="password"
+        class="form-control"
+        placeholder="Confirma tu contrasena"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-az-primary btn-block" [disabled]="isLoading()">
+      @if (isLoading()) {
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>&nbsp;
+        <span class="visually-hidden" role="status">Por favor espera...</span>
+      } @else {
+        Crear cuenta
+      }
+    </button>
+    <div class="az-signin-footer mt-4">
+      <p>Ya tienes cuenta? <a routerLink="/login">Iniciar sesion</a></p>
+    </div>
+  </form>
+</div>
