@@ -1,12 +1,15 @@
-import { Component, input } from '@angular/core';
-import { MCliente } from '../../../models/cliente.model';
+import { Component, inject, input, signal } from '@angular/core';
+import { ClienteService } from '../../../servicios/cliente.service';
+import { Tr } from './tr/tr';
 
 @Component({
   selector: 'app-cliente-table',
   templateUrl: './cliente-table.html',
+  imports: [Tr],
 })
 export class ClienteTableComponent {
-  clientes = input<MCliente[]>([]);
+  clienteService = inject(ClienteService);
+  clientes = this.clienteService.clientes;
 
   constructor() {}
 }

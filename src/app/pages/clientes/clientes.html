@@ -9,7 +9,7 @@
         <i style="font-size: 30px" class="typcn typcn-user-add-outline"></i>
         <div style="text-align: center">
           Clientes
-          <strong class="d-block">100</strong>
+          <strong class="d-block">{{ totalClientes() }}</strong>
         </div>
       </div>
     </div>
@@ -20,25 +20,15 @@
         <i style="font-size: 30px" class="typcn typcn-chart-pie-outline"></i>
         <div style="text-align: center">
           Saldo
-          <strong class="d-block">$62.33</strong>
+          <strong class="d-block">{{ saldoTotal() }}</strong>
         </div>
       </div>
     </div>
   </div>
 </div>
-@if (isLoading()) {
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center p-3">
-      <app-loading />
-    </div>
-  </div>
-} @else {
-  <app-cliente-table [clientes]="clientes()" />
-}
-<button
-  [disabled]="isLoading()"
-  (click)="agregarCliente()"
-  class="btn mt-3 btn-indigo btn-with-icon btn-block"
->
+
+<app-cliente-table />
+
+<button (click)="agregarCliente()" class="btn mt-3 btn-indigo btn-with-icon btn-block">
   <i class="typcn typcn-plus"></i> Agregar cliente
 </button>

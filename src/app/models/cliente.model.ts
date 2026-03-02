@@ -4,7 +4,7 @@ export class MCliente {
     public nombre: string,
     public apellido: string,
     public email: string,
-    public salario: number,
+    public saldo: number,
     public image: string,
   ) {}
 }

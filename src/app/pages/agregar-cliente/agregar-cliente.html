@@ -1,54 +1,90 @@
-<form #agregarClienteForm="ngForm" (ngSubmit)="agregarCliente(agregarClienteForm)">
+<form [formGroup]="clienteForm" (ngSubmit)="agregarCliente()">
   <fieldset>
     <legend class="az-content-label">Nuevo cliente</legend>
 
     <div class="mb-3">
       <label for="nombre">Nombre</label>
       <input
-        ngModel
         type="text"
-        name="nombre"
+        formControlName="nombre"
         class="form-control"
         id="nombre"
         placeholder="Nombre del cliente"
       />
+      @if (nombre?.invalid && nombre?.touched) {
+        <small class="text-danger d-block mt-1">
+          @if (nombre?.errors?.['required']) {
+            <div>Nombre es requerido</div>
+          }
+          @if (nombre?.errors?.['minlength']) {
+            <div>Mínimo 2 caracteres</div>
+          }
+        </small>
+      }
     </div>
     <div class="mb-3">
       <label for="apellido">Apellido</label>
       <input
-        ngModel
         type="text"
-        name="apellido"
+        formControlName="apellido"
         class="form-control"
         id="apellido"
         placeholder="Apellido del cliente"
       />
+      @if (apellido?.invalid && apellido?.touched) {
+        <small class="text-danger d-block mt-1">
+          @if (apellido?.errors?.['required']) {
+            <div>Apellido es requerido</div>
+          }
+          @if (apellido?.errors?.['minlength']) {
+            <div>Mínimo 2 caracteres</div>
+          }
+        </small>
+      }
     </div>
     <div class="mb-3">
       <label for="email">Email</label>
       <input
-        ngModel
         type="email"
-        name="email"
+        formControlName="email"
         class="form-control"
         id="email"
         placeholder="Email del cliente"
       />
+      @if (email?.invalid && email?.touched) {
+        <small class="text-danger d-block mt-1">
+          @if (email?.errors?.['required']) {
+            <div>Email es requerido</div>
+          }
+          @if (email?.errors?.['email']) {
+            <div>Email inválido</div>
+          }
+        </small>
+      }
     </div>
     <div class="mb-3">
       <label for="saldo">Saldo</label>
       <input
-        ngModel
         type="number"
-        name="saldo"
+        formControlName="saldo"
         class="form-control"
         id="saldo"
         placeholder="Saldo del cliente"
       />
+      @if (saldo?.invalid && saldo?.touched) {
+        <small class="text-danger d-block mt-1">
+          @if (saldo?.errors?.['required']) {
+            <div>Saldo es requerido</div>
+          }
+          @if (saldo?.errors?.['min']) {
+            <div>Saldo no puede ser negativo</div>
+          }
+        </small>
+      }
     </div>
 
     <div class="mb-3 d-flex gap-2">
-      <button type="submit" class="btn btn-primary btn-with-icon">
+      <button type="submit" class="btn btn-primary btn-with-icon" [disabled]="!clienteForm.valid">
         <i class="typcn typcn-document-add"></i>
         Agregar cliente
       </button>

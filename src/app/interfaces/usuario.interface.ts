@@ -4,10 +4,17 @@ export interface IUsuario {
   nombre: string;
   email: string;
   fechaRegistro: Date;
+  saldo: number;
   image?: string;
 }
 
 export interface RegisterResponse {
+  message: string;
+  token: string;
+  usuario: IUsuario;
+}
+
+export interface LoginResponse {
   message: string;
   token: string;
   usuario: IUsuario;
